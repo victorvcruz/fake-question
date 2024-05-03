@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuzinho?</title>
+    <title>Button Mágico</title>
+    <!-- Adicionando o Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body, html {
@@ -17,7 +17,7 @@
         }
 
         #magicButton {
-            position: absolute;
+            position: relative;
         }
 
         #gifContainer {
@@ -29,20 +29,29 @@
             max-width: 400px;
             height: auto;
         }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .button-container button {
+            margin: 0 5px;
+        }
     </style>
 </head>
-
 <body class="d-flex justify-content-center align-items-center flex-column">
     <h1 class="mb-4">Cuzinho hoje?</h1>
-    <div class="d-flex justify-content-between">
-        <button id="magicButton" class="btn btn-danger mb-3" onclick="moveButton()" onmouseover="moveButton()">Não</button>
-        <button id="clickableButton" class="btn btn-success mb-3" onclick="showGif()">Sim</button>
+    <div class="button-container mb-3">
+        <button id="magicButton" class="btn btn-danger" onclick="moveButton()" onmouseover="moveButton()">Não</button>
+        <button id="clickableButton" class="btn btn-success" onclick="showGif()">Sim</button>
     </div>
 
     <div id="gifContainer">
         <img id="gifImage" src="https://media.tenor.com/LyiynwDA18oAAAAM/hai.gif" alt="GIF">
     </div>
 
+    <!-- Adicionando o Bootstrap JS (opcional) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
@@ -52,6 +61,16 @@
             var maxY = window.innerHeight - button.offsetHeight;
             var newX = Math.floor(Math.random() * maxX);
             var newY = Math.floor(Math.random() * maxY);
+            
+            for (var i = 0; i < 1000; i++) {
+                if (newX > 200 || newY > 300) {
+                    newX = Math.max(0, Math.min(maxX, Math.floor(Math.random() * maxX)));
+                    newY = Math.max(0, Math.min(maxY, Math.floor(Math.random() * maxY)));
+                } else {
+                    break;
+                }
+            }
+
             button.style.left = newX + "px";
             button.style.top = newY + "px";
         }
@@ -62,5 +81,4 @@
         }
     </script>
 </body>
-
 </html>
