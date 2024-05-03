@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Mágico</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #magicButton {
+            width: 100px;
+            height: 50px;
+            background-color: #fd3737;
+            color: black;
+            border: none;
+            cursor: default;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+        }
+
+        #clickableButton {
+            width: 100px;
+            height: 50px;
+            background-color: #28a745;
+            color: black;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        #title {
+            position: absolute;
+            top: 40%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+        }
+
+        #gifContainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #gifImage {
+            width: 90vw;
+            max-width: 400px;
+            height: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+        #magicButton {
+            width: 100px;
+            height: 50px;
+            background-color: #fd3737;
+            color: black;
+            border: none;
+            cursor: default;
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+        }
+
+        #clickableButton {
+            width: 100px;
+            height: 50px;
+            background-color: #28a745;
+            color: black;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        #title {
+            position: absolute;
+            top: 40%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+        }
+
+        #gifContainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #gifImage {
+            width: 90vw;
+            max-width: 400px;
+            height: auto;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">Cuzinho hoje?</h1>
+    <button id="magicButton" onclick="moveButton()" onmouseover="moveButton()">Não</button>
+    <button id="clickableButton" onclick="showGif()">Sim</button>
+
+    <div id="gifContainer">
+        <img id="gifImage" src="https://media.tenor.com/LyiynwDA18oAAAAM/hai.gif" alt="GIF">
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.getElementById("magicButton");
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+            var newX = Math.floor(Math.random() * maxX);
+            var newY = Math.floor(Math.random() * maxY);
+            button.style.left = newX + "px";
+            button.style.top = newY + "px";
+        }
+
+        function showGif() {
+            var gifContainer = document.getElementById("gifContainer");
+            gifContainer.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
