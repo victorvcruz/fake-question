@@ -57,22 +57,25 @@
     <script>
         function moveButton() {
             var button = document.getElementById("magicButton");
-            var maxX = window.innerWidth - button.offsetWidth;
-            var maxY = window.innerHeight - button.offsetHeight;
+            var maxX = 200
+            var maxY = 300
             var newX = Math.floor(Math.random() * maxX);
             var newY = Math.floor(Math.random() * maxY);
-
-            for (var i = 0; i < 1000; i++) {
-                if (newX > 200 || newY > 300) {
-                    newX = Math.max(0, Math.min(maxX, Math.floor(Math.random() * maxX)));
-                    newY = Math.max(0, Math.min(maxY, Math.floor(Math.random() * maxY)));
-                } else {
-                    break;
-                }
-            }
-
             button.style.left = newX + "px";
             button.style.top = newY + "px";
+        }
+
+        function isOverlap(element1, element2, x, y) {
+            var rect1 = element1.getBoundingClientRect();
+            var rect2 = element2.getBoundingClientRect();
+
+            // Verifica se há sobreposição entre os dois elementos
+            return !(rect1.right < rect2.left || 
+                     rect1.left > rect2.right || 
+                     rect1.bottom < rect2.top || 
+                     rect1.top > rect2.bottom ||
+                     Math.abs(rect1.left - x) < 50 || // Define uma margem de 50px
+                     Math.abs(rect1.top - y) < 50); // Define uma margem de 50px
         }
 
         function showGif() {
